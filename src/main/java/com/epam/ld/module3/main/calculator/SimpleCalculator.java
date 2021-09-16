@@ -1,5 +1,7 @@
 package com.epam.ld.module3.main.calculator;
 
+import java.math.BigInteger;
+
 public class SimpleCalculator {
 
     private double operandA;
@@ -16,6 +18,10 @@ public class SimpleCalculator {
 
     public double plus() {
         return operandA + operandB;
+    }
+
+    public BigInteger plus(BigInteger a, BigInteger b) {
+        return a.add(b);
     }
 
 }
