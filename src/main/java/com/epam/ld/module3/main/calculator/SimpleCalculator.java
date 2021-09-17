@@ -20,8 +20,8 @@ public class SimpleCalculator {
         return operandA + operandB;
     }
 
-    public BigInteger plus(BigInteger a, BigInteger b) {
-        return a.add(b);
+    public BigInteger plus(BigInteger operandA, BigInteger operandB) {
+        return operandA.add(operandB);
     }
 
 }
