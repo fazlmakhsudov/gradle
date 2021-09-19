@@ -1,0 +1,15 @@
+apply plugin: 'war'
+
+version = '1.0'
+
+dependencies {
+    compileOnly group: 'javax.servlet', name: 'servlet-api', version: '2.5'
+    implementation project(':services')
+    testImplementation project(':services')
+    implementation project(':utils')
+    testImplementation project(':utils')
+}
+
+war {
+    enabled=true
+}

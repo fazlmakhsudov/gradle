@@ -1,2 +1,6 @@
-rootProject.name = 'module5'
+rootProject.name = 'gradle-multy-project'
+include 'utils'
+include 'services'
+include 'admin'
+include 'web'
 

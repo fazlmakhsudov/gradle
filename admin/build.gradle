@@ -1,0 +1,11 @@
+apply plugin: 'java-library-distribution'
+
+version = '1.0'
+
+dependencies {
+    implementation project(':services')
+    testImplementation project(':services')
+    implementation project(':utils')
+    testImplementation project(':utils')
+}
+

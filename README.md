@@ -1,27 +1,26 @@
-Benchmark for Sorting and Binary Searching algorithms
-=================================
+Gradle Multy Project
+====================
+## Instructions
+### How to build project
+gradle build
+### How to clean project
+gradle clean
+### How to test project
+gradle test -i
+### How to copy admin.jar to root/archives/*
+gradle copyAdminJar
+### How to copy web.war to root/archives/*
+gradle copyWebWar
 
-# Binary Searching 
-
-O(1) < compare > O(log n)
-
-|Benchmark|Mode|Cnt|Score|Error|Units|     
-|---------|----|---|-----|-----|-----| 
-|BenchmarkSearchingAlgorithms.testIterativeBenchMark|avgt|9|0.655 |±0.230|s/op|
-|BenchmarkSearchingAlgorithms.testRecursiveBenchMark|avgt|9|0.692 |±0.248|s/op|
-
-According to result, there is no big difference in executing for 100_000 size store 
-
-# Sorting
-
-O (N^2) < compare > O(N log(N))
-
-|Benchmark|Mode|Cnt|Score|Error|Units|     
-|---------|----|---|-----|-----|-----| 
-|BenchmarkSortingAlgorithms.testInsertionSort|avgt|9|17.352|±3.276|s/op|
-|BenchmarkSortingAlgorithms.testMergeSort|avgt|9|0.044|±0.003|s/op|
-
-According to the result Merge Sort algorithm is much more effective.
-
-
-
+Maven Multy Project
+====================
+## Instructions
+### How to package project
+mvn package
+### How to clean project and archive folder
+mvn clean
+### How to test project
+mvn test
+### How to copy admin.jar and web.war to root/archives/*
+### 
+mvn install
