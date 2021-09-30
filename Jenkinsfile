@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
         gradle "Gradle_Local"
+        maven "Maven-Local"
     }
     environment {
         gradle = "gradle"
