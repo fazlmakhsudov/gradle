@@ -39,7 +39,7 @@ pipeline {
                     }
                     if (buildTool.equals(env.maven)) {
                         stage("Clean project with maven") {
-                            if (params.cleanBeforeBuild && params.cleanBeforeBuild == 'true') {
+                            if (params.cleanBeforeBuild && params.cleanBeforeBuild == true) {
                                 echo 'Cleaning starts **********'
                                 sh 'mvn clean'
                                 echo 'Cleaning completed ******'
