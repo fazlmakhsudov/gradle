@@ -1,32 +1,63 @@
 pipeline {
     agent any
+    environment {
+        FOO = "bar"
+    }
     parameters {
-        string(name: 'STATUS', defaultValue:'waiting', description: 'status to deploy')
-        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: 'version with choices')
-        booleanParam(name: 'executeTests', defaultValue: true, description: 'description for booleanParam')
+        choice(name: 'buildTool', choices: ['maven', 'gradle',FOO], description: 'Build tool with choices')
+        booleanParam(name: 'cleanBeforeBuild', defaultValue: true, description: 'Clean before build')
     }
     stages {
-        stage("build") {
+        stage("Initial configuration") {
             steps {
-                echo 'Building **********'
-                echo "STATUS is ${params.STATUS}"
+                echo 'Building stage **********'
+                echo "Build tool is ${params.buildTool}"
+                echo "Clean project before build status is: ${params.cleanBeforeBuild}"
             }
         }
-        stage("test") {
-            when {
-                expression {
-                    params.executeTests
+        script {
+            if (buildTool.equals("gradle")) {
+                stage("Clean project with gradle") {
+                    when {
+                        expression {
+                            params.cleanBeforeBuild
+                        }
+                    }
+                    steps {
+                        echo 'Cleaning starts **********'
+                        sh 'gradle clean'
+                        echo 'Cleaning completed ******'
+                    }
+                }
+                stage("Build with gradle") {
+                    steps {
+                        echo 'Building starts **********'
+                        sh 'gradle build'
+                        echo 'Building completed ******'
+                    }
                 }
             }
-            steps {
-                echo 'Testing **********'
+            if (buildTool.equals("maven")) {
+                stage("Clean project with maven") {
+                    when {
+                        expression {
+                            params.cleanBeforeBuild
+                        }
+                    }
+                    steps {
+                        echo 'Cleaning starts **********'
+                        sh 'maven clean'
+                        echo 'Cleaning completed ******'
+                    }
+                }
+                stage("Build with gradle") {
+                    steps {
+                        echo 'Building starts **********'
+                        sh 'maven install'
+                        echo 'Building completed ******'
+                    }
+                }
             }
-        }
-        stage("deploy") {
-            steps {
-                echo 'Deploying **********'
-                echo "VERSION is ${params.VERSION}"
-            }
-        }
+        }    
     }
 }
