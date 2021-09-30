@@ -25,7 +25,7 @@ pipeline {
                 script {
                     if (buildTool.equals(env.gradle)) {
                         stage("Clean project with gradle") {
-                            if (params.cleanBeforeBuild && params.cleanBeforeBuild == 'true') {
+                            if (params.cleanBeforeBuild && params.cleanBeforeBuild == true) {
                                 echo 'Cleaning starts **********'
                                 sh 'gradle clean'
                                 echo 'Cleaning completed ******'
