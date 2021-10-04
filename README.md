@@ -23,4 +23,4 @@ mvn clean
 mvn test
 ### How to copy admin.jar and web.war to root/archives/*
 ### 
-mvn install 
+mvn install
